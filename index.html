@@ -791,7 +791,11 @@ function calcOptSpread(){
   const PT = 50; // TXO 每點金額
   const buyPremAmt = buyPrem*PT*lots;
   const sellPremAmt = sellPrem*PT*lots;
-  const rawNetDebit = buyPremAmt - sellPremAmt;
+  // 價差策略：一買一賣，淨成本 = 買進權利金 － 賣出權利金
+  // 跨式／勒式：兩腳同方向（都買進或都賣出），買進跨勒式淨成本 = 兩腳相加；賣出跨勒式是淨收入，用負號表示
+  const rawNetDebit = isCombo
+    ? (isComboLong ? (buyPremAmt + sellPremAmt) : -(buyPremAmt + sellPremAmt))
+    : (buyPremAmt - sellPremAmt);
 
   // 開倉成本
   const openFee = 15*2*lots;
