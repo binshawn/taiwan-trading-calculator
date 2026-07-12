@@ -240,10 +240,13 @@
         <div class="field">
           <label>商品</label>
           <div class="seg" id="f_product">
+            <button data-v="TX">大台 TX</button>
             <button class="on" data-v="MTX">小台 MTX</button>
             <button data-v="TMF">微台 TMF</button>
           </div>
         </div>
+      </div>
+      <div class="row">
         <div class="field">
           <label>方向</label>
           <div class="seg" id="f_dir">
@@ -308,6 +311,7 @@
       <div class="table-scroll"><table>
         <thead><tr><th>商品</th><th>結算保證金</th><th>維持保證金</th><th>原始保證金</th></tr></thead>
         <tbody>
+          <tr><td>臺股期貨（大台 TX）</td><td id="f_margin_tx_settle">—</td><td id="f_margin_tx_maintain">—</td><td id="f_margin_tx_initial">—</td></tr>
           <tr><td>小型臺指期貨（MTX）</td><td id="f_margin_mtx_settle">—</td><td id="f_margin_mtx_maintain">—</td><td id="f_margin_mtx_initial">—</td></tr>
           <tr><td>微型臺指期貨（TMF）</td><td id="f_margin_tmf_settle">—</td><td id="f_margin_tmf_maintain">—</td><td id="f_margin_tmf_initial">—</td></tr>
         </tbody>
@@ -657,6 +661,7 @@ function calcStock(){
 
 // ---------- 台指期貨 ----------
 const FUT_SPEC = {
+  TX:{fee:50, point:200},
   MTX:{fee:18, point:50},
   TMF:{fee:15, point:10}
 };
@@ -962,6 +967,7 @@ fetch('./margin-data.json?_=' + Date.now())
   .then(r => r.json())
   .then(d => {
     const setCell = (id, v) => { const el = document.getElementById(id); if(el) el.textContent = fmt0(v); };
+    if(d.tx){ setCell('f_margin_tx_settle', d.tx.settle); setCell('f_margin_tx_maintain', d.tx.maintain); setCell('f_margin_tx_initial', d.tx.initial); }
     if(d.mtx){ setCell('f_margin_mtx_settle', d.mtx.settle); setCell('f_margin_mtx_maintain', d.mtx.maintain); setCell('f_margin_mtx_initial', d.mtx.initial); }
     if(d.tmf){ setCell('f_margin_tmf_settle', d.tmf.settle); setCell('f_margin_tmf_maintain', d.tmf.maintain); setCell('f_margin_tmf_initial', d.tmf.initial); }
     if(d.txo_a){ setCell('o_margin_a_settle', d.txo_a.settle); setCell('o_margin_a_maintain', d.txo_a.maintain); setCell('o_margin_a_initial', d.txo_a.initial); }
