@@ -345,7 +345,7 @@
     </div>
 
     <div class="card" id="o_legs_spread_card">
-      <h2>兩腳部位</h2>
+      <h2>雙腳部位</h2>
       <div class="row leg-row">
         <div class="field">
           <label id="o_buy_label">買進履約價</label>
@@ -435,6 +435,18 @@
       </table></div>
       <div class="foot-note">買一賣一同方向的價差組合通常適用 C 值計收（遠低於單邊裸露的 A/B 值），但實際核准與比例仍以下單當下期貨商系統及台灣期交所公告為準。此表僅適用於價差策略；單腳（尤其裸賣）保證金計算方式不同，請另洽券商。</div>
     </div>
+
+    <div class="card" id="o_margin_single_card" style="display:none;">
+      <h2>單腳保證金說明 — 台灣期交所</h2>
+      <div class="table-scroll"><table>
+        <thead><tr><th>策略</th><th>是否需要保證金</th></tr></thead>
+        <tbody>
+          <tr><td>買進買權／買進賣權（Long Call／Long Put）</td><td>不需要，最大風險就是已付出的權利金</td></tr>
+          <tr><td>賣出買權／賣出賣權（Short Call／Short Put，裸賣）</td><td>需要，且金額每日變動</td></tr>
+        </tbody>
+      </table></div>
+      <div class="foot-note">裸賣保證金採 MAX(A值, B值) 公式：A值＝權利金×標的乘數＋MAX(原始保證金－價外損失, 最低結算保證金)；B值＝權利金×標的乘數＋原始保證金×1/2。金額會隨標的物收盤價、履約價、權利金每日浮動，並非固定表格數字，本工具不做即時試算，請以下單當下期貨商系統試算或台灣期交所官網（taifex.com.tw）公告為準。</div>
+    </div>
   </div>
 
   <div class="foot-note" style="text-align:center; margin-top:20px; opacity:0.6;">
@@ -483,6 +495,7 @@ document.querySelectorAll('.seg').forEach(seg=>{
       document.getElementById('o_legs_spread_card').style.display = isSingle ? 'none' : '';
       document.getElementById('o_legs_single_card').style.display = isSingle ? '' : 'none';
       document.getElementById('o_margin_card').style.display = isSingle ? 'none' : '';
+      document.getElementById('o_margin_single_card').style.display = isSingle ? '' : 'none';
     }
     recalcAll();
   });
