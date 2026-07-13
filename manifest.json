@@ -1,6 +1,6 @@
 {
-  "name": "當沖／期貨／選擇權 損益試算機",
-  "short_name": "損益試算機",
+  "name": "當沖／期貨／選擇權 損益計算機",
+  "short_name": "損益計算機",
   "description": "台股當沖、台指期貨、選擇權價差損益試算工具",
   "start_url": "./index.html",
   "scope": "./",
