@@ -1,33 +1,33 @@
 {
-  "updated": "2026/07/06",
+  "updated": "2026/08/12",
   "tx": {
-    "settle": 471000,
-    "maintain": 488000,
-    "initial": 636000
+    "settle": 519000,
+    "maintain": 538000,
+    "initial": 701000
   },
   "mtx": {
-    "settle": 117750,
-    "maintain": 122000,
-    "initial": 159000
+    "settle": 129750,
+    "maintain": 134500,
+    "initial": 175250
   },
   "tmf": {
-    "settle": 23550,
-    "maintain": 24400,
-    "initial": 31800
+    "settle": 25950,
+    "maintain": 26900,
+    "initial": 35050
   },
   "txo_a": {
-    "settle": 125000,
-    "maintain": 130000,
-    "initial": 169000
+    "settle": 138000,
+    "maintain": 143000,
+    "initial": 187000
   },
   "txo_b": {
-    "settle": 63000,
-    "maintain": 65000,
-    "initial": 85000
+    "settle": 69000,
+    "maintain": 72000,
+    "initial": 94000
   },
   "txo_c": {
-    "settle": 12600,
-    "maintain": 13000,
-    "initial": 17000
+    "settle": 13800,
+    "maintain": 14400,
+    "initial": 18800
   }
 }
